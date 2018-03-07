@@ -1,8 +1,7 @@
 #!/bin/bash
 
-curl "http://localhost:4741/users/${ID}" \
+curl "http://localhost:4741/guitars/${ID}" \
   --include \
   --request GET \
-  --header "Authorization: Token token=${TOKEN}"
 
 echo
