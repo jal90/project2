@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class GuitarsController < OpenReadController
+class GuitarsController < ProtectedController
   before_action :set_guitar, only: %i[show update destroy]
 
   # GET /guitars
   def index
-    @guitars = Guitar.all
+    @guitars = current_user.guitars
 
     render json: @guitars
   end
@@ -47,7 +47,7 @@ class GuitarsController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_guitar
-    @guitar = Guitar.find(params[:id])
+    @guitar = current_user.guitars.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
